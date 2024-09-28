@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import './ViewBook.css'
 
 const ViewBook = () => {
   const location = useLocation();
@@ -28,8 +29,6 @@ const ViewBook = () => {
   return (
     <div>
       <h1>Summary Of The Book {bookName} Until Page {pageNumber}</h1>
-      <img src="https://m.media-amazon.com/images/I/511G04l12qL._SY445_SX342_.jpg"/>
-      <p>Author: {bookObject.author}</p>
       <p>Book Name: {bookName}</p>
       <p>Summary To Page Number: {pageNumber}</p>
       {bookObject ? (

@@ -1,0 +1,13 @@
+h1 {
+    font-family: 'Lilita One', cursive;
+    font-size: 32px; /* Adjust the font size */
+    color: rgb(218, 143, 207); /* Change the text color */
+    text-align: center; /* Center the text */
+    margin: 20px 0; /* Add margin above and below */
+    /* Add any other styles you want */
+}
+
+p {
+    font-family: 'Lilita One', cursive;
+    color: rgb(218, 143, 207);
+}

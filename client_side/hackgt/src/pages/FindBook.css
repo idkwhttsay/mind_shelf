@@ -1,7 +1,14 @@
 /* Ensure body and html are 100% of the viewport width and height *
 
 /* Full-page layout for the main container */
+body {
+  margin: 0; /* Remove default body margin */
+  padding: 0; /* Remove default body padding */
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
 .main {
+    background-size: cover;
     background-color: hsla(252.44,71.93%,77.65%,1);
     min-height: 100vh;       /* Make sure .main takes full viewport height */
     width: 100vw;            /* Make sure it stretches to full viewport width */
@@ -24,6 +31,7 @@ nav {
 }
 
 nav h1 {
+    font-family: 'Lilita One', cursive;
     color: hsla(309.47,52.29%,21.37%,1);
 }
 
@@ -33,9 +41,9 @@ nav h1 {
     flex-direction: column;
     justify-content: center; /* Center content vertically */
     align-items: center;     /* Center content horizontally */
-    width: 300px;            /* Set width of form */
-    margin: 0 auto;          /* Center form horizontally */
-    padding: 1rem;           /* Add some padding around the form */
+    width: 100%;            /* Set width of form */
+    margin: 0 auto;          /* Center form horizontally */ 
+    background-size: cover;         /* Add some padding around the form */
     background-color: hsla(252.44,71.93%,77.65%,1);
 }
 
@@ -52,6 +60,7 @@ nav h1 {
   }
   
   #findBookForm label {
+    font-family: 'Lilita One', cursive;
     font-size: 1rem;       /* Label font size */
     margin-bottom: 0.5rem; /* Space between label and input */
     display: block;        /* Ensure labels are on a new line */
@@ -67,6 +76,7 @@ nav h1 {
   }
   
   #findBookForm button {
+    font-family: 'Lilita One', cursive;
     padding: 0.7rem;        /* Button padding */
     width: 100%;            /* Full width button */
     background-color: hsla(309.47,52.29%,21.37%,1); /* Button background */
