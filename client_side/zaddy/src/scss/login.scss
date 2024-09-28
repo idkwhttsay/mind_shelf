@@ -5,11 +5,13 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding-top: 30px;
+  padding-top: 40px;
   position: absolute;
   top: 0;
   z-index: -999;
-  background: #cce6ff;
+  background: rgb(2,0,36);
+  background: radial-gradient(circle, rgba(2,0,36,1) 4%, rgba(4,2,58,1) 18%, rgba(9,9,121,1) 100%);
+  color: white;
 }
 
 
@@ -49,4 +51,88 @@
 
 .nav-wave {
   z-index: -9999;
+}
+
+.login-btn {
+ backface-visibility: hidden;
+ background-color: rgba(9,9,121,1);
+ border-radius: 10px;
+ border-width: 0;
+ box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+ box-sizing: border-box;
+ color: #fff;
+ cursor: pointer;
+ font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+ font-size: 22px;
+ height: 50px;
+ line-height: 1.15;
+ margin: 12px 0 0;
+ outline: none;
+ overflow: hidden;
+ padding: 0 25px;
+ position: relative;
+ text-align: center;
+ text-transform: none;
+ transform: translateZ(0);
+ transition: all .2s,box-shadow .08s ease-in;
+ touch-action: manipulation;
+ width: 150px;
+}
+
+.login-btn:disabled {
+  cursor: default;
+}
+
+.login-btn:focus {
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+}
+
+//POPUP SECTION
+
+.popup-box {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  position: fixed;
+  border: 2px solid black;
+  border-radius: 15px;
+  transform: translateX(-50%) translateY(-50%);
+  top: 50%;
+  left: 50%;
+  background: #030332;
+  color: white;
+  box-shadow: 0 0 10px 1px black;
+}
+
+.dark {
+  position: absolute;
+  background: black;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  opacity: 50%;
+}
+
+.popup-form {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+
+  label {
+    margin-bottom: 5px;
+    font-size: 20px;
+  }
+
+  input {
+    margin-bottom: 15px;
+    font-size: 15px;
+    border: 1px black solid;
+  }
+  button {
+    margin: 15px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 20px;
+  }
 }

@@ -1,11 +1,13 @@
 .nav-box {
-  padding: 15px;
+  padding: 15px 0;
   display: flex;
   width: 100%;
-  background: black;
+  //background: black;
 }
 
 .nav-title {
+  margin-left: auto;
+  margin-right: auto;
   font-size: 40px;
   color: white;
 }
