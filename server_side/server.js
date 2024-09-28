@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const userRouter = require("./routes/userRoute");
 const bookRouter = require("./routes/bookRoute");
 
@@ -11,6 +12,7 @@ const DB_PASSWORD = process.env.DB_PASSWORD;
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 // user route
