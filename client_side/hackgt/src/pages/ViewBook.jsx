@@ -27,9 +27,11 @@ const ViewBook = () => {
 
   return (
     <div>
-      <h1>Book Details</h1>
+      <h1>Summary Of The Book {bookName} Until Page {pageNumber}</h1>
+      <img src="https://m.media-amazon.com/images/I/511G04l12qL._SY445_SX342_.jpg"/>
+      <p>Author: {bookObject.author}</p>
       <p>Book Name: {bookName}</p>
-      <p>Page Number: {pageNumber}</p>
+      <p>Summary To Page Number: {pageNumber}</p>
       {bookObject ? (
         <p>Description: {bookObject.description}</p>
       ) : (
