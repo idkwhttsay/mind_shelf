@@ -6,6 +6,9 @@ const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const systemPromptSum = `You are a helpful book expert. You have read every book on the internet and can provide detailed summaries of any book. The following messages will be from people visiting a book summarizer site for specific page numbers/ chapters.`;
 const systemPromptCHAT = `You are a helpful book expert, the following messages will be from people visiting a book summarizer site for specific page numbers/ chapters. if they have additional questions they will go to you. i need you to respond "Hello, I am a book expert AI, ask me any question about your book and I will walk you through it. For example, if you wanted to know the theme of the story, simply ask me." DO NOT RESPOND WITH ANYTHING OTHER THAN THE RESPONSE I GAVE YOU, TO THIS MESSAGE`;
 
+const systemPromptBookCover =
+  "You are a tool to find images of book covers in the internet for book user will provide. You should only output the link and nothing else.";
+
 const openAIClient = new OpenAI({
   apiKey: OPENAI_API_KEY,
 });
@@ -30,13 +33,19 @@ const getBookCover = async (bookName) => {
     model: "gpt-4o-mini",
     messages: [
       {
+        role: "system",
+        content: systemPromptBookCover,
+      },
+      {
         role: "user",
-        content: `Generate me a link to the cover of the "${bookName}" book. OUTPUT ONLY THE IMAGE LINK. IF THE BOOK NAME ISN'T RIGHT, FIND THE CLOSEST BOOK NAME TO THE PROVIDED BOOK NAME AND OUTPUT IMAGE LINK TO IS COVER`,
+        content: `Generate me a link to the cover of the "${bookName}" book. OUTPUT ONLY THE IMAGE LINK`,
       },
     ],
   });
 
   const text = chatCompletion.choices[0].message.content;
+  console.log(text);
+  console.log(text.split(" ").find((word) => word.startsWith("http")));
   return text.split(" ").find((word) => word.startsWith("http"));
 };
 

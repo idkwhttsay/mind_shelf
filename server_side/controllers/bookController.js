@@ -3,9 +3,10 @@ const { getSumCompletion, getBookCover } = require("./openai-api-handler");
 const { logRequest } = require("../logger/logger");
 
 const getAllBooks = async (req, res) => {
-  logRequest("GET", "/book/", req.body);
+  logRequest("GET-request", "/book/", req.body);
   try {
     const books = await Book.find({ userId: req.body.userId });
+    logRequest("GET-response", `/book/`, books);
     res.status(200).send(books);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -14,13 +15,14 @@ const getAllBooks = async (req, res) => {
 
 const getBookById = async (req, res) => {
   const id = req.params.id;
-  logRequest("GET", `/book/${id}`, req.body);
+  logRequest("GET-request", `/book/${id}`, req.body);
   try {
     const book = await Book.findById(id);
     if (!book) {
       res.status(404).json({ message: "Book not found" });
     }
 
+    logRequest("GET-response", `/book/${id}`, book);
     res.status(200).json(book);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -28,13 +30,14 @@ const getBookById = async (req, res) => {
 };
 
 const addBook = async (req, res) => {
-  logRequest("POST", "/book/", req.body);
+  logRequest("POST-request", "/book/", req.body);
   const book = req.body;
   book.description = await getSumCompletion(book.bookName, book.pageNumber);
   book.imageUrl = await getBookCover(book.bookName);
 
   try {
     const bookSummary = await Book.create(book);
+    logRequest("POST-response", `/book/`, bookSummary);
     res.status(200).send(bookSummary);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -43,7 +46,7 @@ const addBook = async (req, res) => {
 
 const updateBookById = async (req, res) => {
   const id = req.params.id;
-  logRequest("PUT", `book/${id}`, req.body);
+  logRequest("PUT-request", `book/${id}`, req.body);
   try {
     const book = await Book.findByIdAndUpdate(id, req.body);
     if (!book) {
@@ -51,6 +54,7 @@ const updateBookById = async (req, res) => {
     }
 
     const updatedBook = await Book.findById(id);
+    logRequest("PUT-response", `book/${id}`, updatedBook);
     res.status(200).json(updatedBook);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -59,13 +63,14 @@ const updateBookById = async (req, res) => {
 
 const deleteBookById = async (req, res) => {
   const id = req.params.id;
-  logRequest("DEL", `book/${id}`, req.body);
+  logRequest("DEL-request", `book/${id}`, req.body);
   try {
     const book = await Book.findByIdAndDelete(id, req.body);
     if (!book) {
       res.status(404).json({ message: "Book not found" });
     }
 
+    logRequest("DEL-response", `book/${id}`, book);
     res.status(200).json(book);
   } catch (error) {
     res.status(400).json({ message: error.message });
