@@ -17,6 +17,35 @@ const findOrCreateUser = async (req, res) => {
   }
 };
 
+const getAllUsers = async (req, res) => {
+  logRequest("POST-request", "/user/", req.body);
+  try {
+    const users = await User.find({});
+    logRequest("POST-response", "/user/", users);
+    res.status(200).send(users);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+const getUserById = async (req, res) => {
+  const id = req.params.id;
+  logRequest("GET-request", `/user/${id}`, req.body);
+  try {
+    const user = await User.findById(id);
+    if (!user) {
+      res.status(404).json({ message: "User not found" });
+    }
+
+    logRequest("GET-response", `/user/${id}`, user);
+    res.status(200).send(user);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 module.exports = {
   findOrCreateUser,
+  getAllUsers,
+  getUserById,
 };
