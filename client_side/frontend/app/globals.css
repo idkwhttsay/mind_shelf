@@ -5,8 +5,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: hsla(252.44,71.93%,77.65%,1);
+    --foreground: hsla(309.47,52.29%,21.37%,1);
   }
 }
 

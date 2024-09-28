@@ -1,95 +1,66 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useRef } from 'react';
+import { useRouter } from 'next/navigation';
+import Router from 'next/navigation';
 import styles from "./page.module.css";
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const router = useRouter();
+  const [bookName, setBookName] = useState<string>('');
+  const [pageNumber, setPageNumber] = useState<number | string>('');
+  
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(`Book Name: ${bookName}, Page Number: ${pageNumber}`);
+
+
+    // If validation passes, trigger the Link click
+    router.push(`/pages/test`);
+
+    // Clear form fields
+    setBookName('');
+    setPageNumber('');
+  };
+
+  return (
+    <div>
+      <nav className={styles.navbar}>
+        <h1 className={styles.title}>MindShelf</h1>
+        <div className={styles.links}>
+          <a href="/login" className={styles.link}>Login</a>
+          <a href="/profile" className={styles.link}>Profile</a>
         </div>
+      </nav>
+      <main className={styles.main}>
+        <h2>Enter the name of the book</h2>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <div className={styles.formGroup}>
+            <label htmlFor="bookName">Book Name:</label>
+            <input
+              type="text"
+              id="bookName"
+              name="bookName"
+              value={bookName}
+              onChange={(e) => setBookName(e.target.value)}
+              required
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="pageNumber">Page Number:</label>
+            <input
+              type="number"
+              id="pageNumber"
+              name="pageNumber"
+              value={pageNumber}
+              onChange={(e) => setPageNumber(Number(e.target.value))}
+              required
+            />
+          </div>
+          <button type="submit" className={styles.submitButton}>Submit</button>
+        </form>
       </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
