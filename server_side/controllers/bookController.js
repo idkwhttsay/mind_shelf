@@ -11,6 +11,11 @@ const openAIClient = new OpenAI({
   apiKey: OPENAI_API_KEY,
 });
 
+const logRequest = (method, url, data) => {
+  const color = "\x1b[32m";
+  console.log(`${color}[${method}] ${url}\x1b[0m`, data || "");
+};
+
 const getSumCompletion = async (bookName, pageNumber) => {
   const chatCompletion = await openAIClient.chat.completions.create({
     model: "gpt-4o-mini",
@@ -40,6 +45,7 @@ const getChatCompletion = async () => {
 };
 
 const getAllBooks = async (req, res) => {
+  logRequest("GET", "/book/", req.body);
   try {
     const books = await Book.find({ userId: req.body.userId });
     res.status(200).send(books);
@@ -50,6 +56,7 @@ const getAllBooks = async (req, res) => {
 
 const getBookById = async (req, res) => {
   const id = req.params.id;
+  logRequest("GET", `/book/${id}`, req.body);
   try {
     const book = await Book.findById(id);
     if (!book) {
@@ -63,6 +70,7 @@ const getBookById = async (req, res) => {
 };
 
 const addBook = async (req, res) => {
+  logRequest("POST", "/book/", req.body);
   const book = req.body;
   book.description = await getSumCompletion(book.bookName, book.pageNumber);
 
@@ -76,6 +84,7 @@ const addBook = async (req, res) => {
 
 const updateBookById = async (req, res) => {
   const id = req.params.id;
+  logRequest("PUT", `book/${id}`, req.body);
   try {
     const book = await Book.findByIdAndUpdate(id, req.body);
     if (!book) {
@@ -91,6 +100,7 @@ const updateBookById = async (req, res) => {
 
 const deleteBookById = async (req, res) => {
   const id = req.params.id;
+  logRequest("DEL", `book/${id}`, req.body);
   try {
     const book = await Book.findByIdAndDelete(id, req.body);
     if (!book) {
