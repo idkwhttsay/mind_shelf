@@ -29,13 +29,15 @@ const ViewBook = () => {
   return (
     <div>
       <h1>Summary Of The Book {bookName} Until Page {pageNumber}</h1>
-      <p>Book Name: {bookName}</p>
-      <p>Summary To Page Number: {pageNumber}</p>
-      {bookObject ? (
-        <p>Description: {bookObject.description}</p>
-      ) : (
-        <p>Loading...</p>
-      )}
+      <p id="name">Book Name: {bookName}</p>
+      <p id="page">Summary To Page Number: {pageNumber}</p>
+      <div className="summary">
+        {bookObject ? (
+          <p>Description: {bookObject.description}</p>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
     </div>
   );
 };
