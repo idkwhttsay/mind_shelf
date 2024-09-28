@@ -34,13 +34,6 @@ const getAllBooks = async (req, res) => {
   logRequest("GET", "/book/", req.body);
   try {
     const books = await Book.find({ userId: req.body.userId });
-    if (!books) {
-      res
-        .status(404)
-        .json({
-          message: `User ${req.body.userId} doesn't exist or no books for User ${req.body.userId}`,
-        });
-    }
     res.status(200).send(books);
   } catch (error) {
     res.status(400).json({ message: error.message });

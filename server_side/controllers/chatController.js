@@ -26,3 +26,12 @@ const getChatCompletion = async () => {
 
   return chatCompletion.choices[0].message.content;
 };
+
+const getAllMessages = (req, res) => {};
+
+const addMessage = (req, res) => {};
+
+module.exports = {
+  getAllMessages,
+  addMessage,
+};

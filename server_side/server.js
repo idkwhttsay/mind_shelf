@@ -1,8 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+
 const userRouter = require("./routes/userRoute");
 const bookRouter = require("./routes/bookRoute");
+const chatRouter = require("./routes/chatRoute");
 
 require("dotenv").config();
 
@@ -20,6 +22,9 @@ app.use("/user", userRouter);
 
 // book route
 app.use("/book", bookRouter);
+
+// chat route
+app.use("/chat", chatRouter);
 
 mongoose
   .connect(
