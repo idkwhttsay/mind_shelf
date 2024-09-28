@@ -6,28 +6,23 @@ const ViewBook = () => {
   const location = useLocation();
   const { bookName, pageNumber } = location.state || {};
   const [bookObject, setBookObject] = useState(null);
-  const [requestMade, setRequestMade] = useState(false);
 
   useEffect(() => {
-    if (!requestMade) {
-      // set it to true after first request
-      setRequestMade(true);
+    const fetchData = async () => {
+      try {
+        const response = await axios.post("http://localhost:3000/book/", {
+          bookName: bookName,
+          pageNumber: pageNumber,
+          userId: "user123",
+        });
 
-      const fetchData = async () => {
-        try {
-          const response = await axios.post("http://localhost:3000/book/", {
-            bookName: bookName,
-            pageNumber: pageNumber,
-            userId: "user123",
-          });
-          setBookObject(response.data);
-        } catch (error) {
-          console.error("Error making request:", error);
-        }
-      };
+        setBookObject(response.data);
+      } catch (error) {
+        console.error("Error making request:", error);
+      }
+    };
 
-      fetchData(); // call the function once
-    }
+    fetchData();
   }, []);
 
   return (
