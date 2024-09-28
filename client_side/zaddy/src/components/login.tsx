@@ -7,13 +7,19 @@ import bottom_wave from "../imgs/bottom_wave.svg";
 export function Login() {
   return (
     <>
-      <img src={nav_wave} />
+      <img className="nav-wave" src={nav_wave} />
       <div className="login-container">
         <div className="login-header">
-          Sign in with Google to start reading..
+          Sign in with email to start reading..
         </div>
-        <div className="google-login">
-          <GoogleButton />
+        <div>
+          <form className="login-form">
+            <label>Email:</label>
+            <input placeholder="email@example.com" />
+            <label>Password:</label>
+            <input type="password" />
+            <button>Login</button>
+          </form>
         </div>
       </div>
     </>

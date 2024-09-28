@@ -9,6 +9,7 @@
   position: absolute;
   top: 0;
   z-index: -999;
+  background: #cce6ff;
 }
 
 
@@ -19,4 +20,33 @@
 
 .google-login {
   margin-left: -150px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  label {
+    font-size: 25px;
+  }
+  input {
+    background: none;
+    border: black 2px solid;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    width: 100%;
+    padding: 5px 15px 5px 15px;
+  }
+  button {
+    background: black;
+    border: 2px solid black;
+    color: white;
+    font-size: 25px;
+    border-radius: 5px;
+  }
+}
+
+.nav-wave {
+  z-index: -9999;
 }

@@ -194,15 +194,15 @@ Bad Request 400
 ```
 
 ## User Model
-### findOrCreateUser [POST]
-Route: “/user/login”
+### registerUser [POST]
+Route: “/user/register”
 
-Description: Adds user to the database
+Description: Registers user with email and password
 #### Input format JSON:
 ```json
 {
     "email": "String",
-    "userId": "String"
+    "password": "String"
 }
 ```
 
@@ -210,10 +210,11 @@ Description: Adds user to the database
 OK 200
 ```json
 {
-"email": "String",
-"userId": "String",
-"createdAt": "Date",
-"updatedAt": "Date"
+  "email": "String",
+  "password": "String",
+  "_id": "String",
+  "createdAt": "Date",
+  "updatedAt": "Date"
 }
 ```
 
@@ -228,6 +229,44 @@ User Already Exists 401
 ```json
 {
   "message": "User already exists"
+}
+```
+
+### loginUser [POST]
+Route: “/user/login”
+
+Description: Login user with email and password
+#### Input format JSON:
+```json
+{
+    "email": "String",
+    "password": "String"
+}
+```
+
+#### Output format JSON:
+OK 200
+```json
+{
+  "email": "String",
+  "password": "String",
+  "_id": "String",
+  "createdAt": "Date",
+  "updatedAt": "Date"
+}
+```
+
+Bad Request 400
+```json
+{
+  "message": "Error message"
+}
+```
+
+User Already Exists 404
+```json
+{
+  "message": "Wrong email or password"
 }
 ```
 
