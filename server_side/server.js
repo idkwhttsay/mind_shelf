@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const userRouter = require('./routes/userRoute')
 
 require("dotenv").config();
 
@@ -10,6 +11,9 @@ const DB_PASSWORD = process.env.DB_PASSWORD;
 const app = express();
 
 app.use(express.json());
+
+// routes
+app.use('/user', userRouter);
 
 mongoose
     .connect(
