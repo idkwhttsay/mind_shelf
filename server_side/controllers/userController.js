@@ -1,16 +1,35 @@
 const User = require("../models/userModel");
 const { logRequest } = require("../logger/logger");
 
-const findOrCreateUser = async (req, res) => {
-  logRequest("POST-request", "/user/login", req.body);
+const registerUser = async (req, res) => {
+  logRequest("POST-request", "/user/register", req.body);
   try {
-    const user = await User.find({ userId: req.body.userId });
+    const user = await User.findOne({ email: req.body.email });
     if (!user) {
       const newUser = await User.create(req.body);
-      logRequest("POST-response", "/user/login", newUser);
+      logRequest("POST-response", "/user/register", newUser);
       res.status(200).send(newUser);
     } else {
-      res.status(401).send({ message: "User already exists" });
+      res.status(401).json({ message: "User already exists" });
+    }
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+const loginUser = async (req, res) => {
+  logRequest("POST-request", "/user/login", req.body);
+  try {
+    const user = await User.findOne({ email: req.body.email });
+    if (!user) {
+      res.status(404).json({ message: "Wrong email or password" });
+    }
+
+    if (user.password === req.body.password) {
+      logRequest("POST-response", "/user/login", user);
+      res.status(200).send(user);
+    } else {
+      res.status(404).json({ message: "Wrong email or password" });
     }
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -45,7 +64,8 @@ const getUserById = async (req, res) => {
 };
 
 module.exports = {
-  findOrCreateUser,
+  registerUser,
+  loginUser,
   getAllUsers,
   getUserById,
 };
