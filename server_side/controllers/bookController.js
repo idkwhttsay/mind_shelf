@@ -1,6 +1,40 @@
 const Book = require("../models/bookModel");
+const { OpenAI } = require("openai");
+require("dotenv").config();
 
-const generateDescription = () => {};
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+
+const systemPromptCHAT = "You are a helpful assistant...";
+const systemPromptSum = "You are book summarizer...";
+
+const openAIClient = new OpenAI({
+  apiKey: OPENAI_API_KEY,
+});
+
+const getSumCompletion = async () => {
+  const chatCompletion = await openAIClient.chat.completions.create({
+    model: "gpt-4o-mini",
+    messages: [
+      { role: "system", content: systemPromptSum },
+      { role: "user", content: "Can you say hello to me?" },
+    ],
+  });
+
+  return chatCompletion.choices[0].message.content;
+};
+
+const getChatCompletion = async () => {
+  const chatCompletion = await openAIClient.chat.completions.create({
+    model: "gpt-4o-mini",
+    stream: true,
+    messages: [
+      { role: "system", content: systemPromptCHAT },
+      { role: "user", content: "Can you say hello to me?" },
+    ],
+  });
+
+  return chatCompletion.choices[0].message.content;
+};
 
 const getAllBooks = async (req, res) => {
   try {
@@ -19,16 +53,19 @@ const getBookById = async (req, res) => {
       res.status(404).json({ message: "Book not found" });
     }
 
-    res.status(400).json(book);
+    res.status(200).json(book);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 };
 
 const addBook = async (req, res) => {
+  const book = req.body;
+  book.description = await getSumCompletion();
+
   try {
-    const book = await Book.create(req.body);
-    res.status(200).send(book);
+    const bookSummary = await Book.create(book);
+    res.status(200).send(bookSummary);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
