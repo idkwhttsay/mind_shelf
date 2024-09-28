@@ -39,7 +39,7 @@ const getChatCompletion = async () => {
 
 const getAllBooks = async (req, res) => {
   try {
-    const books = await Book.find({ userId: req.userId });
+    const books = await Book.find({ userId: req.body.userId });
     res.status(200).send(books);
   } catch (error) {
     res.status(400).json({ message: error.message });
