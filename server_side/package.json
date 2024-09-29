@@ -18,6 +18,7 @@
     "mongoose": "^8.7.0",
     "nodemon": "^3.1.7",
     "openai": "^4.65.0",
-    "punycode": "^2.3.1"
+    "punycode": "^2.3.1",
+    "remove-markdown": "^0.5.5"
   }
 }
