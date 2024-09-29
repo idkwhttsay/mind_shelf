@@ -10,14 +10,19 @@
   margin-right: auto;
   font-size: 40px;
   color: black;
-  font-family: "Roboto";
+  font-family: "Roboto", serif;
   font-weight: bold;
   cursor: pointer;
 }
 
 .log-out {
   position: absolute;
+  cursor: pointer;
   right: 10px;
   top: 30px;
   color: black;
+}
+
+.log-out:hover {
+  text-decoration: underline;
 }
