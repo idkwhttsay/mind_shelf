@@ -13,6 +13,6 @@ bookRouter.post("/", addBook);
 bookRouter.delete("/:id", deleteBookById);
 bookRouter.put("/:id", updateBookById);
 bookRouter.get("/:id", getBookById);
-bookRouter.get("/", getAllBooks);
+bookRouter.post("/getAll", getAllBooks);
 
 module.exports = bookRouter;

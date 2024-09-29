@@ -3,10 +3,11 @@ const { getSumCompletion, getBookCover } = require("./openai-api-handler");
 const { logRequest } = require("../logger/logger");
 
 const getAllBooks = async (req, res) => {
-  logRequest("GET-request", "/book/", req.body);
+  logRequest("POST-request", "/book/getAll", req.body);
+  console.log(req.body);
   try {
-    const books = await Book.find({ userId: req.body.userId });
-    logRequest("GET-response", `/book/`, books);
+    const books = await Book.find({ email: req.body.email });
+    logRequest("POST-response", `/book/getAll`, books);
     res.status(200).send(books);
   } catch (error) {
     res.status(400).json({ message: error.message });

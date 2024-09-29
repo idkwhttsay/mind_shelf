@@ -17,7 +17,7 @@ const bookSchema = new mongoose.Schema(
       required: true,
     },
 
-    userId: {
+    email: {
       type: String,
       required: true,
     },
