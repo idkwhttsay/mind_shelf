@@ -12,7 +12,7 @@ Description: Creates book with specified fields
 {
   "bookName": "String",
   "pageNumber": "Number",
-  "userId": "String"
+  "email": "String"
 }
 ```
 
@@ -25,7 +25,7 @@ OK 200
       "description": "String",
       "pageNumber": "Number",
       "imageUrl": "String",
-      "userId": "String",
+      "email": "String",
       "_id": "String",
       "createdAt": "Date",
       "updatedAt": "Date"
@@ -50,7 +50,7 @@ params: "id": String
 {
     "name": "String",
     "pageNumber": "Number",
-    "userId": "String"
+    "email": "String"
 }
 ```
 
@@ -77,7 +77,7 @@ OK 200
     "description": "String",
     "imageUrl": "String",
     "pageNumber": "Number",
-    "userId": "String",
+    "email": "String",
     "_id": "String",
     "createdAt": "Date",
     "updatedAt": "Date"
@@ -115,7 +115,7 @@ OK 200
     "name": "String",
     "description": "String",
     "pageNumber": "Number",
-    "userId": "String",
+    "email": "String",
     "_id": "String",
     "createdAt": "Date",
     "updatedAt": "Date"
@@ -150,22 +150,22 @@ OK 200
     "name": "String",
     "description": "String",
     "pageNumber": "Number",
-    "userId": "String",
+    "email": "String",
     "_id": "String",
     "createdAt": "Date",
     "updatedAt": "Date"
 }
 ```
 
-### getAllBooks [GET]
-Route: “/book/”
+### getAllBooks [POST]
+Route: “/book/getAll”
 
-Description: Get all book for the specified UserId
+Description: Get all book for the specified email
 
 #### Input format JSON:
 ```json
 {
-  "userId": "String"
+  "email": "String"
 }
 ```
 
@@ -178,7 +178,7 @@ OK 200
     "name": "String",
     "description": "String",
     "pageNumber": "Number",
-    "userId": "String",
+    "email": "String",
     "_id": "String",
     "createdAt": "Date",
     "updatedAt": "Date"
@@ -281,7 +281,7 @@ OK 200
 [
     {
         "email": "String",
-        "userId": "String",
+        "password": "String",
         "createdAt": "Date",
         "updatedAt": "Date"
     }
@@ -298,15 +298,16 @@ Bad Request 400
 ### getUserById [GET]
 Route: “/user/:id”
 
-Description: Get specific user with userId
+Description: Get specific user with email
 #### Input format JSON:
 params: “id”: “string”
 #### Output format JSON:
 OK 200
 ```json
 {
+    "_id": "String",
     "email": "String",
-    "userId": "String",
+    "password": "String",
     "createdAt": "Date",
     "updatedAt": "Date"
 }

@@ -1,0 +1,41 @@
+.book-box {
+  display: flex;
+  flex-wrap: wrap;
+  div {
+    background: white;
+    color: black;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 15px;
+    border: 2px solid black;
+    box-shadow: 0 0 10px 2px black;
+  }
+}
+
+.box {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 100px;
+  z-index: -999;
+  background: rgb(2,0,36);
+  background: radial-gradient(circle, rgba(2,0,36,1) 4%, rgba(4,2,58,1) 18%, rgba(9,9,121,1) 100%);
+  color: white;
+}
+
+.plus {
+  button {
+    font-size: 105px;
+    color: black;
+    border: none;
+    background: none;
+  }
+  button:active {
+    color: grey;
+  }
+
+  background: black;
+  text-align: center;
+}

@@ -1,0 +1,23 @@
+.dark {
+  z-index: 0;
+}
+
+.edit-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
+  transform: translateX(-50%) translateY(-50%);
+  background: white;
+  color: black;
+  padding: 20px;
+}
+
+.description {
+  border: 1px black solid;
+  max-height: 400px;
+  overflow-y: scroll;
+  line-height: 1.5em;
+  background-color: rgba(255, 172, 28,0.4);
+  padding: 10px;
+}

@@ -1,0 +1,43 @@
+.add-box {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background: white;
+  color: black;
+
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px 10px black;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    input {
+      margin: 15px;
+      font-size: 15px;
+      border: 1px black solid;
+      border-radius: 5px;
+      padding: 5px 10px;
+    }
+    button {
+      background: black;
+      color: white;
+      margin: 15px;
+      font-size: 15px;
+      border: 1px black solid;
+      border-radius: 5px;
+      padding: 5px 10px;
+    }
+
+    button:active {
+      background: white;
+      color: black;
+    }
+  }
+}
+
+.dark {
+  z-index: 0;
+}
