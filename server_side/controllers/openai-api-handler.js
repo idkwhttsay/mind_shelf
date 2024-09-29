@@ -1,5 +1,4 @@
 const { OpenAI } = require("openai");
-const removeMd = require("remove-markdown");
 require("dotenv").config();
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
@@ -26,7 +25,7 @@ const getSumCompletion = async (bookName, pageNumber) => {
     ],
   });
 
-  return removeMd(chatCompletion.choices[0].message.content);
+  return chatCompletion.choices[0].message.content;
 };
 
 const getBookCover = async (bookName) => {

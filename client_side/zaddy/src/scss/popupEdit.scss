@@ -21,3 +21,21 @@
   background-color: rgba(255, 172, 28,0.4);
   padding: 10px;
 }
+
+.edit-form {
+  margin: 15px 0;
+  input {
+    margin: 0 15px;
+  }
+}
+
+.edit-btn {
+  background: none;
+  border: 1px black solid;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.loading-img {
+  margin-top: 20px;
+}

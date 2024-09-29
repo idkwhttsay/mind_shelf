@@ -1,11 +1,17 @@
 import "../scss/navbar.scss";
-import nav_wave from "../imgs/nav_wave.svg";
+import "@fontsource/roboto";
+import logo from "../imgs/logo.png";
 
-export function Navbar() {
+export function Navbar(props: { loggedIn: boolean }) {
   return (
     <>
       <div className="nav-box">
-        <div className="nav-title">mind shelf</div>
+        <img width={150} src={logo} className="nav-title" />
+        {props.loggedIn && (
+          <a href="/" className="log-out">
+            Log out
+          </a>
+        )}
       </div>
     </>
   );

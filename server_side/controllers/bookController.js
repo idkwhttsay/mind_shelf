@@ -54,7 +54,10 @@ const updateBookById = async (req, res) => {
       res.status(404).json({ message: "Book not found" });
     }
 
-    book.description = getSumCompletion(book.bookName, req.body.pageNumber);
+    book.description = await getSumCompletion(
+      book.bookName,
+      req.body.pageNumber,
+    );
     book.pageNumber = req.body.pageNumber;
     await Book.findByIdAndUpdate(id, book);
     const updatedBook = await Book.findById(id);

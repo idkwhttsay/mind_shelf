@@ -21,20 +21,20 @@ export function LoginPopup(props: { setClicked: (clicked: boolean) => void }) {
       <div className="popup-box">
         <h2>Login with your mind shelf ID</h2>
         <form className="popup-form">
-          <label>Email:</label>
           <input
             type="email"
             value={email}
+            placeholder="Email"
             onChange={(input) => setEmail(input.target.value)}
           />
-          <label>Password:</label>
           <input
             type="password"
             value={password}
+            placeholder="Password"
             onChange={(input) => setPassword(input.target.value)}
           />
           <button type="button" onClick={login}>
-            Submit
+            Login
           </button>
         </form>
       </div>

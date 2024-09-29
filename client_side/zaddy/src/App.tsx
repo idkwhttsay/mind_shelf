@@ -10,7 +10,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
-        <Navbar />
+        <Navbar loggedIn={false} />
         <Login />
       </>
     ),
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     path: "/home",
     element: (
       <>
-        <Navbar />
+        <Navbar loggedIn />
         <Home />
       </>
     ),

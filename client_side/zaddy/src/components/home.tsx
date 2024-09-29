@@ -16,7 +16,7 @@ export function Home() {
         email: "johndoe@example.com",
       })
       .then((response) => {
-        if (response.status == 200) return response.data;
+        if (response.status === 200) return response.data;
       })
       .then((objs) => {
         setBooks(objs);

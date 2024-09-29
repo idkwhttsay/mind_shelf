@@ -9,8 +9,8 @@
   position: absolute;
   top: 0;
   z-index: -999;
-  background: rgb(2,0,36);
-  background: radial-gradient(circle, rgba(2,0,36,1) 4%, rgba(4,2,58,1) 18%, rgba(9,9,121,1) 100%);
+  background-color: #7fcec5;
+  background-image: linear-gradient(315deg, #7fcec5 0%, #14557b 74%);  color: white;
   color: white;
 }
 
@@ -24,67 +24,42 @@
   margin-left: -150px;
 }
 
-.login-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  label {
-    font-size: 25px;
-  }
-  input {
-    background: none;
-    border: black 2px solid;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    font-size: 20px;
-    width: 100%;
-    padding: 5px 15px 5px 15px;
-  }
-  button {
-    background: black;
-    border: 2px solid black;
-    color: white;
-    font-size: 25px;
-    border-radius: 5px;
-  }
-}
-
 .nav-wave {
   z-index: -9999;
 }
 
 .login-btn {
- backface-visibility: hidden;
- background-color: rgba(9,9,121,1);
- border-radius: 10px;
- border-width: 0;
- box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
- box-sizing: border-box;
- color: #fff;
- cursor: pointer;
- font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
- font-size: 22px;
- height: 50px;
- line-height: 1.15;
- margin: 12px 0 0;
- outline: none;
- overflow: hidden;
- padding: 0 25px;
- position: relative;
- text-align: center;
- text-transform: none;
- transform: translateZ(0);
- transition: all .2s,box-shadow .08s ease-in;
- touch-action: manipulation;
- width: 150px;
+  background-color: #FFFFFF;
+  border: 0;
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #111827;
+  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-weight: 600;
+  line-height: 1.25rem;
+  padding: .75rem 1rem;
+  text-align: center;
+  font-size: 20px;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
-.login-btn:disabled {
-  cursor: default;
+.login-btn:hover {
+  background-color: rgb(249,250,251);
 }
 
 .login-btn:focus {
-  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.login-btn:focus-visible {
+  box-shadow: none;
 }
 
 //POPUP SECTION
@@ -99,7 +74,8 @@
   transform: translateX(-50%) translateY(-50%);
   top: 50%;
   left: 50%;
-  background: #030332;
+  background-color: #7fcec5;
+  background-image: linear-gradient(315deg, #7fcec5 0%, #14557b 74%);  color: white;
   color: white;
   box-shadow: 0 0 10px 1px black;
 }
@@ -115,14 +91,39 @@
   }
 
   input {
-    margin-bottom: 15px;
-    font-size: 15px;
-    border: 1px black solid;
+    padding: 6px 12px;
+    background: white;
+    border: 1px solid rgb(60, 63, 68);
+    border-radius: 4px;
+    font-size: 20px;
+    margin: 10px;
+    color: black;
+    appearance: none;
+    transition: border 0.15s ease 0s;
+    :focus {
+      outline: none;
+      box-shadow: none;
+      border-color: rgb(100, 153, 255);
+    }
   }
   button {
-    margin: 15px;
-    border: 2px solid black;
-    border-radius: 5px;
+    margin-top: 15px;
+    background-color: #FFFFFF;
+    border: 0;
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #111827;
+    font-weight: 600;
+    line-height: 1.25rem;
+    padding: .75rem 1rem;
+    text-align: center;
     font-size: 20px;
+    text-decoration: none #D1D5DB solid;
+    text-decoration-thickness: auto;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
   }
 }
