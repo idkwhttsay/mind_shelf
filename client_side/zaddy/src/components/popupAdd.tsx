@@ -8,13 +8,17 @@ export function PopupAdd(props: {
 }) {
   const [bookName, setBookName] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   async function add() {
+    setLoading(true);
     const response = await axios.post("http://localhost:3012/book", {
       bookName: bookName,
       pageNumber: pageNumber,
       email: props.email,
     });
+    setLoading(false);
+    props.setAdding(false);
   }
 
   return (
@@ -37,13 +41,7 @@ export function PopupAdd(props: {
             type="number"
             min={0}
           />
-          <button
-            onClick={() => {
-              add();
-              props.setAdding(false);
-            }}
-            type="button"
-          >
+          <button onClick={add} type="button">
             Submit
           </button>
         </form>
