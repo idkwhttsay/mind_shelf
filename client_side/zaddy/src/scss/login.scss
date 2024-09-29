@@ -28,6 +28,16 @@
   z-index: -9999;
 }
 
+@keyframes btn-animation {
+  from {transform: none;box-shadow: 3px 3px 1px 2px rgba(0, 0, 0, 0.5);}
+  to { transform: translateX(3px) translateY(3px); box-shadow: none;}
+}
+
+@keyframes btn-animation-1 {
+  to {transform: none; box-shadow: 3px 3px 1px 2px rgba(0, 0, 0, 0.5);}
+  from { transform: translateX(3px) translateY(3px); box-shadow: none;}
+}
+
 .login-btn {
   background-color: #FFFFFF;
   border: 0;
@@ -42,15 +52,21 @@
   font-size: 20px;
   text-decoration: none #D1D5DB solid;
   text-decoration-thickness: auto;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 3px 3px 1px 2px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  animation-name: btn-animation-1;
+  animation-duration: 0.5s;
 }
 
 .login-btn:hover {
   background-color: rgb(249,250,251);
+  animation-name: btn-animation;
+  animation-duration: 0.5s;
+  transform: translateX(3px) translateY(3px);
+  box-shadow: none;
 }
 
 .login-btn:focus {
@@ -74,8 +90,7 @@
   transform: translateX(-50%) translateY(-50%);
   top: 50%;
   left: 50%;
-  background-color: #7fcec5;
-  background-image: linear-gradient(315deg, #7fcec5 0%, #14557b 74%);  color: white;
+  background-color: #14557b;
   color: white;
   box-shadow: 0 0 10px 1px black;
 }
@@ -126,4 +141,11 @@
     -webkit-user-select: none;
     touch-action: manipulation;
   }
+}
+
+.register-text {
+  text-align: center;
+  color: black;
+  text-decoration: underline;
+  cursor: pointer;
 }

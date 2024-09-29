@@ -10,10 +10,12 @@ export function Home() {
   const [adding, setAdding] = useState(false);
   const [editing, setEditing] = useState<Book | null>(null);
 
+  let email = window.localStorage.getItem("email") ?? "";
+
   useEffect(() => {
     axios
       .post("http://localhost:3012/book/getAll", {
-        email: "johndoe@example.com",
+        email: email,
       })
       .then((response) => {
         if (response.status === 200) return response.data;
@@ -23,31 +25,31 @@ export function Home() {
       });
   }, [books]);
 
+  if (email == "") {
+    window.location.replace("/");
+    return <></>;
+  }
+
   return (
     <div className="box">
-      {(books.length && (
-        <>
-          <div className="book-box">
-            {books.map((book) => (
-              <div onClick={() => setEditing(book)}>
-                <h2>{book.bookName}</h2>
-                <p>Your last page number is: {book.pageNumber}</p>
-                <p>
-                  Last updated at:{" "}
-                  {new Date(book.updatedAt).toLocaleDateString()}
-                </p>
-                {/*<a>Last updated at: {book.updatedAt}</a>*/}
-              </div>
-            ))}
-            <div className="plus">
-              <button onClick={() => setAdding(true)}>+</button>
+      <>
+        <div className="book-box">
+          {books.map((book) => (
+            <div onClick={() => setEditing(book)}>
+              <h2>{book.bookName}</h2>
+              <p>Your last page number is: {book.pageNumber}</p>
+              <p>
+                Last updated at: {new Date(book.updatedAt).toLocaleDateString()}
+              </p>
+              {/*<a>Last updated at: {book.updatedAt}</a>*/}
             </div>
+          ))}
+          <div className="plus">
+            <button onClick={() => setAdding(true)}>+</button>
           </div>
-        </>
-      )) || <></>}
-      {adding && (
-        <PopupAdd setAdding={setAdding} email={"johndoe@example.com"} />
-      )}
+        </div>
+      </>
+      {adding && <PopupAdd setAdding={setAdding} email={email} />}
       {editing && <PopupEdit book={editing} setBook={setEditing} />}
     </div>
   );
