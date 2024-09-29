@@ -49,11 +49,14 @@ const updateBookById = async (req, res) => {
   const id = req.params.id;
   logRequest("PUT-request", `book/${id}`, req.body);
   try {
-    const book = await Book.findByIdAndUpdate(id, req.body);
+    const book = await Book.findById(id);
     if (!book) {
       res.status(404).json({ message: "Book not found" });
     }
 
+    book.description = getSumCompletion(book.bookName, req.body.pageNumber);
+    book.pageNumber = req.body.pageNumber;
+    await Book.findByIdAndUpdate(id, book);
     const updatedBook = await Book.findById(id);
     logRequest("PUT-response", `book/${id}`, updatedBook);
     res.status(200).json(updatedBook);
