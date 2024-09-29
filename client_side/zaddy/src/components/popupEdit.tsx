@@ -16,7 +16,7 @@ export function PopupEdit(props: {
   async function editPage() {
     setLoading(true);
     await axios
-      .put(`http://localhost:3012/book/${props.book._id}`, {
+      .put(`https://mind-shelf.co:3012/book/${props.book._id}`, {
         pageNumber: pageNumber,
       })
       .then((response) => {

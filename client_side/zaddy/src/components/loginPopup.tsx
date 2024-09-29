@@ -14,7 +14,7 @@ export function LoginPopup(props: { setClicked: (clicked: boolean) => void }) {
   const [error, setError] = useState("");
 
   async function login() {
-    const result = await fetch("http://localhost:3012/user/login", {
+    const result = await fetch("https://mind-shelf.co:3012/user/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ export function LoginPopup(props: { setClicked: (clicked: boolean) => void }) {
   }
 
   async function register_fxn() {
-    const result = await fetch("http://localhost:3012/user/register", {
+    const result = await fetch("https://mind-shelf.co:3012/user/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

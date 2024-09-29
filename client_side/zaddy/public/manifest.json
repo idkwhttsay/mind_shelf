@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "mind shelf",
+  "name": "mind shelf is a book summary service that provides concise, easy-to-read summaries of books.",
   "icons": [
     {
       "src": "favicon.ico",

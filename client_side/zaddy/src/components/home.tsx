@@ -15,7 +15,7 @@ export function Home() {
 
   useEffect(() => {
     axios
-      .post("http://localhost:3012/book/getAll", {
+      .post("https://mind-shelf.co:3012/book/getAll", {
         email: email,
       })
       .then((response) => {
@@ -33,7 +33,7 @@ export function Home() {
 
   async function del(event: React.MouseEvent<HTMLButtonElement>, book: Book) {
     event.stopPropagation();
-    await axios.delete(`http://localhost:3012/book/${book._id}`);
+    await axios.delete(`https://mind-shelf.co:3012/book/${book._id}`);
   }
 
   return (
