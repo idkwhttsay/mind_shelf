@@ -30,6 +30,8 @@
 }
 
 .box {
+  display: flex;
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
   position: absolute;
@@ -54,4 +56,16 @@
 
   background: black;
   text-align: center;
+}
+
+.book-item {
+  max-width: 250px;
+}
+
+.delete {
+  display: flex;
+  margin-left: auto;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
 }

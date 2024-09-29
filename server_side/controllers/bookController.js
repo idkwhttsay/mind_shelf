@@ -72,7 +72,7 @@ const deleteBookById = async (req, res) => {
   const id = req.params.id;
   logRequest("DEL-request", `book/${id}`, req.body);
   try {
-    const book = await Book.findByIdAndDelete(id, req.body);
+    const book = await Book.findByIdAndDelete(id);
     if (!book) {
       res.status(404).json({ message: "Book not found" });
     }

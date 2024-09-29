@@ -11,6 +11,7 @@
   background: white;
   color: black;
   padding: 20px;
+  border-radius: 15px;
 }
 
 .description {
@@ -20,6 +21,7 @@
   line-height: 1.5em;
   background-color: rgba(255, 172, 28,0.4);
   padding: 10px;
+  border-radius: 10px;
 }
 
 .edit-form {
@@ -29,11 +31,44 @@
   }
 }
 
+@keyframes btn-animation {
+  from {transform: none;box-shadow: 3px 3px 1px 2px rgba(0, 0, 0, 0.5);}
+  to { transform: translateX(3px) translateY(3px); box-shadow: none;}
+}
+
+@keyframes btn-animation-1 {
+  to {transform: none; box-shadow: 3px 3px 1px 2px rgba(0, 0, 0, 0.5);}
+  from { transform: translateX(3px) translateY(3px); box-shadow: none;}
+}
+
 .edit-btn {
-  background: none;
-  border: 1px black solid;
-  border-radius: 5px;
-  font-size: 15px;
+  background-color: #FFFFFF;
+  border: 0;
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #111827;
+  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-weight: 600;
+  line-height: 1.25rem;
+  padding: 5px 10px;
+  text-align: center;
+  font-size: 17px;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 3px 3px 1px 2px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  animation-duration: 0.5s;
+  animation-name: btn-animation-1;
+}
+
+.edit-btn:hover {
+  transform: translateX(3px) translateY(3px);
+  box-shadow: none;
+  animation-duration: 0.5s;
+  animation-name: btn-animation;
 }
 
 .loading-img {
