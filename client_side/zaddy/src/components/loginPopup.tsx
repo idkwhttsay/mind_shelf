@@ -2,38 +2,58 @@ import { useState } from "react";
 import axios from "axios";
 import sha256 from "crypto-js/sha256";
 
+interface Error {
+  message: string;
+}
+
 export function LoginPopup(props: { setClicked: (clicked: boolean) => void }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [hash, setHash] = useState("");
   const [registering, setRegistering] = useState(false);
+  const [error, setError] = useState("");
 
   async function login() {
-    const result = await axios.post("http://localhost:3012/user/login", {
-      email: email,
-      password: hash,
+    const result = await fetch("http://localhost:3012/user/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: hash,
+      }),
     });
 
     if (result.status === 200) {
       window.location.replace("/home");
       window.localStorage.setItem("email", email);
     }
+    setError(((await result.json()) as Error).message);
   }
 
   async function register_fxn() {
-    const result = await axios.post("http://localhost:3012/user/register", {
-      email: email,
-      password: hash,
+    const result = await fetch("http://localhost:3012/user/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: hash,
+      }),
     });
 
     if (result.status === 200) {
       window.location.replace("/home");
       window.localStorage.setItem("email", email);
     }
+    setError(((await result.json()) as Error).message);
   }
 
   function submit(event: React.FormEvent) {
     event.preventDefault();
+    setError("");
     registering ? register_fxn() : login();
   }
 
@@ -62,6 +82,7 @@ export function LoginPopup(props: { setClicked: (clicked: boolean) => void }) {
               setPassword(input.target.value);
             }}
           />
+          {(error.length && <div className="error">{error}</div>) || <></>}
           <button type="submit">{registering ? "Register" : "Login"}</button>
         </form>
         <div

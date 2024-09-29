@@ -23,10 +23,10 @@ export function Navbar(props: { loggedIn: boolean }) {
         </div>
         <img
           width={150}
+          alt="logo"
           src={logo}
           className="nav-title"
           onClick={() => window.location.replace("/")}
-          alt="logo"
         />
         {props.loggedIn && (
           <a onClick={logout} className="log-out">

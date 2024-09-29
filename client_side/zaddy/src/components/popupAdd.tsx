@@ -13,7 +13,7 @@ export function PopupAdd(props: {
 
   async function add() {
     setLoading(true);
-    const response = await axios.post("http://localhost:3012/book", {
+    await axios.post("http://localhost:3012/book", {
       bookName: bookName,
       pageNumber: pageNumber,
       email: props.email,
@@ -27,7 +27,7 @@ export function PopupAdd(props: {
       <div className="add-box">
         {loading ? (
           <>
-            <img className="loading-gif" src={loading_gif} />
+            <img className="loading-gif" alt="loading" src={loading_gif} />
           </>
         ) : (
           <>

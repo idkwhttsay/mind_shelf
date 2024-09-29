@@ -10,7 +10,7 @@ const registerUser = async (req, res) => {
       logRequest("POST-response", "/user/register", newUser);
       res.status(200).send(newUser);
     } else {
-      res.status(401).json({ message: "User already exists" });
+      res.status(400).send({ message: "User already exists" });
     }
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -22,14 +22,14 @@ const loginUser = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
-      res.status(404).json({ message: "Wrong email or password" });
+      res.status(400).json({ message: "Wrong email or password" });
     }
 
     if (user.password === req.body.password) {
       logRequest("POST-response", "/user/login", user);
       res.status(200).send(user);
     } else {
-      res.status(404).json({ message: "Wrong email or password" });
+      res.status(400).send({ message: "Wrong email or password" });
     }
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -53,7 +53,7 @@ const getUserById = async (req, res) => {
   try {
     const user = await User.findById(id);
     if (!user) {
-      res.status(404).json({ message: "User not found" });
+      res.status(401).json({ message: "User not found" });
     }
 
     logRequest("GET-response", `/user/${id}`, user);

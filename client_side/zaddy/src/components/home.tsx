@@ -26,7 +26,7 @@ export function Home() {
       });
   }, [books]);
 
-  if (email == "") {
+  if (email === "") {
     window.location.replace("/");
     return <></>;
   }
