@@ -18,11 +18,22 @@
 .log-out {
   position: absolute;
   cursor: pointer;
-  right: 10px;
+  right: 30px;
   top: 30px;
   color: black;
+  text-decoration: underline;
 }
 
 .log-out:hover {
-  text-decoration: underline;
+  font-weight: bold;
+}
+
+.log-out:active {
+  font-weight: bolder;
+}
+
+.logged-in-as {
+  position: absolute;
+  top: 30px;
+  left: 15px;
 }

@@ -31,7 +31,9 @@ export function PopupEdit(props: {
       <div className="dark" onClick={() => props.setBook(null)} />
       <div className="edit-box">
         <form className="edit-form">
-          <label>Edit your page number:</label>
+          <label>
+            <b>Edit your page number:</b>
+          </label>
           <input
             value={pageNumber}
             onChange={(input) =>

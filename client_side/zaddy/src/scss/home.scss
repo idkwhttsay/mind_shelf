@@ -62,10 +62,29 @@
   max-width: 250px;
 }
 
+@keyframes delete-btn {
+  from {background: none;}
+  to {background: lightgrey;}
+}
+
+@keyframes delete-btn-1 {
+  from {background: lightgrey;}
+  to {background: none;}
+}
+
 .delete {
   display: flex;
   margin-left: auto;
   font-size: 25px;
   border: none;
   cursor: pointer;
+  background: none;
+  animation-name: delete-btn-1;
+  animation-duration: 0.5s;
+}
+
+.delete:hover {
+  background: lightgrey;
+  animation-name: delete-btn-1;
+  animation-duration: 0.5s;
 }

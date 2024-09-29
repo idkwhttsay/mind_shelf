@@ -31,14 +31,19 @@ export function Home() {
     return <></>;
   }
 
+  async function del(event: React.MouseEvent<HTMLButtonElement>, book: Book) {
+    event.stopPropagation();
+    await axios.delete(`http://localhost:3012/book/${book._id}`);
+  }
+
   return (
     <div className="box">
       <>
         <div className="book-box">
           {books.map((book) => (
             <div className="book-item" onClick={() => setEditing(book)}>
-              <button className="delete">
-                <img src={cancel} width={30} />
+              <button className="delete" onClick={(event) => del(event, book)}>
+                <img src={cancel} alt="delete" width={30} />
               </button>
               <h2>{book.bookName}</h2>
               <p>Your last page number is: {book.pageNumber}</p>

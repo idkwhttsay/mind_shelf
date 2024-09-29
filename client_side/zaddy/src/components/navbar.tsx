@@ -13,11 +13,20 @@ export function Navbar(props: { loggedIn: boolean }) {
   return (
     <>
       <div className="nav-box">
+        <div className="logged-in-as">
+          {props.loggedIn && (
+            <>
+              <b>Logged in as: </b>
+              <u>{window.localStorage.getItem("email")!}</u>
+            </>
+          )}
+        </div>
         <img
           width={150}
           src={logo}
           className="nav-title"
           onClick={() => window.location.replace("/")}
+          alt="logo"
         />
         {props.loggedIn && (
           <a onClick={logout} className="log-out">
