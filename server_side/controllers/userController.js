@@ -23,6 +23,7 @@ const loginUser = async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
       res.status(400).json({ message: "Wrong email or password" });
+      return;
     }
 
     if (user.password === req.body.password) {
@@ -54,6 +55,7 @@ const getUserById = async (req, res) => {
     const user = await User.findById(id);
     if (!user) {
       res.status(401).json({ message: "User not found" });
+      return;
     }
 
     logRequest("GET-response", `/user/${id}`, user);

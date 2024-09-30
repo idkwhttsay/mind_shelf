@@ -21,6 +21,7 @@ const getBookById = async (req, res) => {
     const book = await Book.findById(id);
     if (!book) {
       res.status(404).json({ message: "Book not found" });
+      return;
     }
 
     logRequest("GET-response", `/book/${id}`, book);
@@ -52,6 +53,7 @@ const updateBookById = async (req, res) => {
     const book = await Book.findById(id);
     if (!book) {
       res.status(404).json({ message: "Book not found" });
+      return;
     }
 
     book.description = await getSumCompletion(
@@ -75,6 +77,7 @@ const deleteBookById = async (req, res) => {
     const book = await Book.findByIdAndDelete(id);
     if (!book) {
       res.status(404).json({ message: "Book not found" });
+      return;
     }
 
     logRequest("DEL-response", `book/${id}`, book);
