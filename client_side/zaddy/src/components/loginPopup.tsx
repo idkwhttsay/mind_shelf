@@ -14,41 +14,32 @@ export function LoginPopup(props: { setClicked: (clicked: boolean) => void }) {
   const [error, setError] = useState("");
 
   async function login() {
-    const result = await fetch("https://mind-shelf.co:3012/user/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: hash,
-      }),
+    const result = await axios.post("https://mind-shelf.co:3012/user/login", {
+      email: email,
+      password: hash,
     });
 
     if (result.status === 200) {
       window.location.replace("/home");
       window.localStorage.setItem("email", email);
     }
-    setError(((await result.json()) as Error).message);
+    setError(result.data.message);
   }
 
   async function register_fxn() {
-    const result = await fetch("https://mind-shelf.co:3012/user/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    const result = await axios.post(
+      "https://mind-shelf.co:3012/user/register",
+      {
         email: email,
         password: hash,
-      }),
-    });
+      },
+    );
 
     if (result.status === 200) {
       window.location.replace("/home");
       window.localStorage.setItem("email", email);
     }
-    setError(((await result.json()) as Error).message);
+    setError(result.data.message);
   }
 
   function submit(event: React.FormEvent) {

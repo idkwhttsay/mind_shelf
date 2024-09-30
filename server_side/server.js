@@ -14,7 +14,6 @@ const DB_PASSWORD = process.env.DB_PASSWORD;
 
 const app = express();
 
-// app.use(cors());
 app.use(express.json());
 
 // user route
