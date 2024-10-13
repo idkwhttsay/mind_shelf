@@ -1,197 +1,75 @@
-# Mind Shelf API Documentation
+## Detailed Documentation
 
-## Book Model
-### addBook [POST]
+### Components
 
-Route: “/book/”
+Components are the building blocks of the application's user interface. They are located in the `src/components`
+directory.
 
-Description: Creates book with specified fields
+- **ExampleComponent.tsx**: A brief description of what this component does.
 
-####  Input format JSON:
-```json
-{
-  "bookName": "String",
-  "pageNumber": "Number",
-  "email": "String"
-}
-```
+### Containers
 
-#### Output format JSON:
+Containers manage the state and logic for groups of components. They are located in the `src/containers` directory.
 
-OK 200
-```json
-{
-      "bookName": "String",
-      "description": "String",
-      "pageNumber": "Number",
-      "imageUrl": "String",
-      "email": "String",
-      "_id": "String",
-      "createdAt": "Date",
-      "updatedAt": "Date"
-}
-```
+- **ExampleContainer.tsx**: A brief description of what this container does.
 
-Bad Request 400
-```json
-{
-    "message": "error"
-}
-```
+### Services
 
-### updateBookById [PUT]
-Route: “/book/:id”
+Services handle API calls and any related data logic. They are located in the `src/services` directory.
 
-Description: Updates all book properties with specified book id
-#### Input format JSON:
-params: "id": String
+- **apiService.ts**: A service for making HTTP requests using Axios.
 
-```json
-{
-    "name": "String",
-    "pageNumber": "Number",
-    "email": "String"
-}
-```
+### Utilities
 
-#### Output format JSON:
+Utility functions that are reused throughout the project are located in the `src/utils` directory.
 
-404 Not Found
-```json
-{
-  "message": "Book not found"
-}
-```
+- **helpers.ts**: Contains various helper functions used across components and containers.
 
-Bad Request 400
-```json
-{
-  "message": "Error message"
-}
-```
+### Backend
 
-OK 200
-```json
-{
-    "name": "String",
-    "description": "String",
-    "imageUrl": "String",
-    "pageNumber": "Number",
-    "email": "String",
-    "_id": "String",
-    "createdAt": "Date",
-    "updatedAt": "Date"
-}
-```
+#### Models
 
-### deleteBookById [DEL]
-Route: “/book/:id”
+Mongoose models that define the structure of our MongoDB documents are located in the `server/models` directory.
 
-Description: Deletes book with specified book id
+- **User.ts**: Defines the schema and model for user documents.
 
-#### Input format JSON:
+#### Routes
 
-params: “id”: “string”
+Express routes are defined in the `server/routes` directory.
 
-Output format JSON:
+- **userRoutes.ts**: Contains routes related to user operations such as registration and login.
 
-404 Not Found
-```json
-{
-  "message": "Book not found"
-}
-```
+#### Server
 
-Bad Request 400
-```json
-{
-  "message": "Error message"
-}
-```
+The main server setup is located in `server/server.ts`. This file initializes the Express server, connects to the
+MongoDB database, and defines middleware.
 
-OK 200
-```json 
-{
-    "name": "String",
-    "description": "String",
-    "pageNumber": "Number",
-    "email": "String",
-    "_id": "String",
-    "createdAt": "Date",
-    "updatedAt": "Date"
-}
-```
+### Testing
 
-### getBookById [GET]
-Route: “/book/:id”
+Testing is accomplished using `@testing-library/react` for the frontend, and any Node.js testing framework (like Jest)
+for the backend tests.
 
-Description: Gets book with specified id
-#### Input format JSON:
-params: “id”: “string”
+### Styling
 
-#### Output format JSON:
-404 Not Found
-```json
-{
-  "message": "Book not found"
-}
-```
+Styling for the application is done using SASS. SASS files are linked from each component or container as needed.
 
-Bad Request 400
-```json
-{
-"message": "Error message"
-}
-```
+## Further Reading
 
-OK 200
-```json
-{
-    "name": "String",
-    "description": "String",
-    "pageNumber": "Number",
-    "email": "String",
-    "_id": "String",
-    "createdAt": "Date",
-    "updatedAt": "Date"
-}
-```
+- **React Documentation**: [React](https://reactjs.org/docs/getting-started.html)
+- **TypeScript Documentation**: [TypeScript](https://www.typescriptlang.org/docs/)
+- **Express Documentation**: [Express](https://expressjs.com/)
+- **Mongoose Documentation**: [Mongoose](https://mongoosejs.com/docs/)
+- **Axios Documentation**: [Axios](https://axios-http.com/docs/intro)
 
-### getAllBooks [POST]
-Route: “/book/getAll”
+## Issues
 
-Description: Get all book for the specified email
+If you encounter any issues while using this project, please open an issue in
+the [Issue Tracker](<repository-issue-tracker-url>) and provide as much detail as possible.
 
-#### Input format JSON:
-```json
-{
-  "email": "String"
-}
-```
+## Credits
 
+This project is maintained by [Your Name](<your-profile-url>).
 
-#### Output format JSON:
-OK 200
-```json
-[
-  {
-    "name": "String",
-    "description": "String",
-    "pageNumber": "Number",
-    "email": "String",
-    "_id": "String",
-    "createdAt": "Date",
-    "updatedAt": "Date"
-  }
-]
-```
+## Contact
 
-Bad Request 400
-```json
-{
-  "message": "Error message"
-}
-```
-
-
-
+For any questions or inquiries, please contact [Your Name](mailto:<your-email-address>).

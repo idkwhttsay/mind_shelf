@@ -42,9 +42,9 @@ const getAllUsers = async (req, res) => {
   try {
     const users = await User.find({});
     logRequest("POST-response", "/user/", users);
-    res.status(200).send(users);
+    return res.status(200).send(users);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    return res.status(400).json({ message: error.message });
   }
 };
 
@@ -59,9 +59,9 @@ const getUserById = async (req, res) => {
     }
 
     logRequest("GET-response", `/user/${id}`, user);
-    res.status(200).send(user);
+    return res.status(200).send(user);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    return res.status(400).json({ message: error.message });
   }
 };
 

@@ -8,9 +8,9 @@ const getAllBooks = async (req, res) => {
   try {
     const books = await Book.find({ email: req.body.email });
     logRequest("POST-response", `/book/getAll`, books);
-    res.status(200).send(books);
+    return res.status(200).send(books);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    return res.status(400).json({ message: error.message });
   }
 };
 
@@ -20,14 +20,13 @@ const getBookById = async (req, res) => {
   try {
     const book = await Book.findById(id);
     if (!book) {
-      res.status(404).json({ message: "Book not found" });
-      return;
+      return res.status(404).json({ message: "Book not found" });
     }
 
     logRequest("GET-response", `/book/${id}`, book);
-    res.status(200).json(book);
+    return res.status(200).json(book);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    return res.status(400).json({ message: error.message });
   }
 };
 
@@ -40,9 +39,9 @@ const addBook = async (req, res) => {
   try {
     const bookSummary = await Book.create(book);
     logRequest("POST-response", `/book/`, bookSummary);
-    res.status(200).send(bookSummary);
+    return res.status(200).send(bookSummary);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    return res.status(400).json({ message: error.message });
   }
 };
 
@@ -64,9 +63,9 @@ const updateBookById = async (req, res) => {
     await Book.findByIdAndUpdate(id, book);
     const updatedBook = await Book.findById(id);
     logRequest("PUT-response", `book/${id}`, updatedBook);
-    res.status(200).json(updatedBook);
+    return res.status(200).json(updatedBook);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    return res.status(400).json({ message: error.message });
   }
 };
 
@@ -76,14 +75,13 @@ const deleteBookById = async (req, res) => {
   try {
     const book = await Book.findByIdAndDelete(id);
     if (!book) {
-      res.status(404).json({ message: "Book not found" });
-      return;
+      return res.status(404).json({ message: "Book not found" });
     }
 
     logRequest("DEL-response", `book/${id}`, book);
-    res.status(200).json(book);
+    return res.status(200).json(book);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    return res.status(400).json({ message: error.message });
   }
 };
 
