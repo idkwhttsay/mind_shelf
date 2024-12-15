@@ -8,6 +8,6 @@ COPY ./package*.json /app
 RUN npm install
 
 COPY . .
-EXPOSE 3012
+EXPOSE 80
 
 CMD ["npx", "nodemon", "server.js"]

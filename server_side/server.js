@@ -1,6 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors");
 
 const userRouter = require("./routes/userRoute");
 const bookRouter = require("./routes/bookRoute");
@@ -17,13 +16,13 @@ const app = express();
 app.use(express.json());
 
 // user route
-app.use("/user", userRouter);
+app.use("/api/user", userRouter);
 
 // book route
-app.use("/book", bookRouter);
+app.use("/api/book", bookRouter);
 
 // chat route
-app.use("/chat", chatRouter);
+app.use("/api/chat", chatRouter);
 
 mongoose
   .connect(
