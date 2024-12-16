@@ -5,6 +5,7 @@ import { PopupAdd } from "./popupAdd";
 import { PopupEdit } from "./popupEdit";
 import { Book } from "../data/book";
 import cancel from "../imgs/cancel.png";
+import {API} from "../env";
 
 export function Home() {
   const [books, setBooks] = useState<Book[]>([]);
@@ -15,7 +16,7 @@ export function Home() {
 
   useEffect(() => {
     axios
-      .post("https://mind-shelf.co:3012/book/getAll", {
+      .post(`${API}/book/getAll`, {
         email: email,
       })
       .then((response) => {
@@ -33,7 +34,7 @@ export function Home() {
 
   async function del(event: React.MouseEvent<HTMLButtonElement>, book: Book) {
     event.stopPropagation();
-    await axios.delete(`https://mind-shelf.co:3012/book/${book._id}`);
+    await axios.delete(`${API}/book/${book._id}`);
   }
 
   return (

@@ -2,6 +2,7 @@ import "../scss/popupAdd.scss";
 import { useState } from "react";
 import axios from "axios";
 import loading_gif from "../imgs/loading.gif";
+import {API} from "../env";
 
 export function PopupAdd(props: {
   setAdding: (adding: boolean) => void;
@@ -13,7 +14,7 @@ export function PopupAdd(props: {
 
   async function add() {
     setLoading(true);
-    await axios.post("https://mind-shelf.co:3012/book", {
+    await axios.post(`${API}/book`, {
       bookName: bookName,
       pageNumber: pageNumber,
       email: props.email,

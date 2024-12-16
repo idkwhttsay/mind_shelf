@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import loading_gif from "../imgs/loading.gif";
 import Markdown from "react-markdown";
+import {API} from "../env";
 
 export function PopupEdit(props: {
   book: Book;
@@ -16,7 +17,7 @@ export function PopupEdit(props: {
   async function editPage() {
     setLoading(true);
     await axios
-      .put(`https://mind-shelf.co:3012/book/${props.book._id}`, {
+      .put(`${API}/book/${props.book._id}`, {
         pageNumber: pageNumber,
       })
       .then((response) => {

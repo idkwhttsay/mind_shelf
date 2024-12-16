@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import sha256 from "crypto-js/sha256";
+import {API} from "../env";
 
 interface Error {
   message: string;
@@ -14,7 +15,7 @@ export function LoginPopup(props: { setClicked: (clicked: boolean) => void }) {
   const [error, setError] = useState("");
 
   async function login() {
-    const result = await axios.post("https://mind-shelf.co:3012/user/login", {
+    const result = await axios.post(`${API}/user/login`, {
       email: email,
       password: hash,
     });
@@ -28,7 +29,7 @@ export function LoginPopup(props: { setClicked: (clicked: boolean) => void }) {
 
   async function register_fxn() {
     const result = await axios.post(
-      "https://mind-shelf.co:3012/user/register",
+      `${API}/user/register`,
       {
         email: email,
         password: hash,
